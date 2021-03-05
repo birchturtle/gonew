@@ -50,9 +50,15 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, GoNew Web-World!") 
+}
+
 func main() {
-	net.ListenAndServe(":8080", func(w http.Responsewriter, r *http.Response) {
-	fmt.Fprintf(w, "Hello, GoNew Web-World!")
+	
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":8080", nil)
+	
 }
 ```
 
